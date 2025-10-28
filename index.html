@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    .login-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .login-container:hover {
+      transform: translateY(-3px);
+      box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    input[type="email"], input[type="password"] {
+      width: 85%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input[type="email"]:focus, input[type="password"]:focus {
+      border-color: #6c63ff;
+    }
+
+    button {
+      width: 90%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #6c63ff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #5548d3;
+    }
+
+    #errorMsg {
+      margin-top: 15px;
+      color: #e63946;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Login Page</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email"><br>
+      <input type="password" id="password" placeholder="Password"><br>
+      <button type="button" id="loginButton" onclick="login()">Login</button>
+    </form>
+    <p id="errorMsg"></p>
+  </div>
+
+  <script>
+    function login() {
+      let email = document.getElementById('email').value;
+      let pass = document.getElementById('password').value;
+      let error = document.getElementById('errorMsg');
+
+      if (email === '' || pass === '') {
+        error.textContent = "Fields cannot be empty";
+      } else if (email === 'admin@example.com' && pass === 'admin123') {
+        window.location.href = 'dashboard.html';
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+        error.textContent = "Invalid email format";
+      } else {
+        error.textContent = "Invalid credentials";
+      }
+    }
+  </script>
+
+</body>
+</html>
