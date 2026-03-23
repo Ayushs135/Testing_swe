@@ -4,7 +4,7 @@ import json
 class FirebaseUser(HttpUser):
     wait_time = between(1, 3) 
 
-    firebase_url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDiehZHyHpOpaZKbBqiE3YpLQeA1i3M0EE"
+    firebase_url = process.env.API_KEY
     headers = {"Content-Type": "application/json"}
 
     # --- Task 1: Successful login (correct credentials) ---
